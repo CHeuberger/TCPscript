@@ -149,11 +149,11 @@ public class MonitorPanel extends JPanel {
     }
     
     private void appendInput(byte[] data) {
-        append("IN  " + StringHelper.toString(data) + " " + StringHelper.toHexString(data));
+        append("IN  " + StringHelper.toMonitorString(data) + "\n                  " + StringHelper.toHexString(data));
     }
     
     private void appendOutput(byte[] data) {
-        append("OUT " + StringHelper.toString(data) + " " + StringHelper.toHexString(data));
+        append("OUT " + StringHelper.toMonitorString(data) + "\n                  " + StringHelper.toHexString(data));
     }
     
     private synchronized void append(String msg) {

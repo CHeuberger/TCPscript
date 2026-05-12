@@ -62,6 +62,20 @@ public class StringHelper {
         return new String(conv, 0, conv.length);
     }
     
+    public static String toMonitorString(byte[] data) {
+        if (data == null)
+            return null;
+        
+        char[] conv = new char[data.length];
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] != '\n' && (data[i]&0xFF) < convTable.length)
+                conv[i] = convTable[(data[i]&0xFF)];
+            else
+                conv[i] = (char) (data[i] & 0xFF);
+        }
+        return new String(conv, 0, conv.length).replace("\n", "\n                  ");
+    }
+    
     public static String toHexString(byte[] data) {
         StringBuilder builder = new StringBuilder();
         builder.append("[");
